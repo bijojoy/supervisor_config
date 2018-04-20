@@ -1,0 +1,31 @@
+---
+# tasks file for supervisor_config
+- name: Create supervisord config folder
+  file:
+    dest: /etc/supervisor
+    state: directory
+    owner: root
+
+- name: Create(Copy) supervisord config file
+  copy:
+     src: supervisord.conf
+     dest: /etc/supervisord.conf
+
+- name: Create(Copy) supervisord init script
+  copy:
+    src: supervisord.sh
+    dest: /etc/init.d/supervisord
+    mode: 0755
+
+- name: Start supervisord service
+  service:
+    name: supervisord
+    state: started
+    enabled: yes
+
+- name: Create(Copy) supervisor program config
+  template:
+    src: app.conf.j2
+    dest: "/etc/supervisor/{{ app_name }}.conf"
+  # notify:
+  #   - Restart Flask App

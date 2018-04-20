@@ -1,0 +1,18 @@
+[program:{{ app_name }}]
+command=python {{ app_folder }}devops-challenge/{{app_name}}.py &
+# directory={{ app_folder }}devops-challenge
+
+autostart=true
+autorestart=true
+
+logfile={{ app_folder }}logs/{{ app_name }}.log
+logfile_maxbytes=1MB
+logfile_backups=10
+
+stderr_logfile={{ app_folder }}logs/{{ app_name }}.err.log
+stderr_logfile_maxbytes=1MB
+stderr_logfile_backups=10
+
+stdout_logfile={{ app_folder }}logs/{{ app_name }}.out.log
+stdout_logfile_maxbytes=1MB
+stdout_logfile_backups=10

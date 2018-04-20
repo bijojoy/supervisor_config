@@ -1,0 +1,6 @@
+---
+# handlers file for supervisor_config
+- name: Restart Flask App
+  supervisorctl:
+    name: "{{ app_name }}"
+    state: restarted

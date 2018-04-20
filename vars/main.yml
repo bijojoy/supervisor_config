@@ -1,0 +1,4 @@
+---
+# vars file for supervisor_config
+app_name: app
+app_folder: "/webapps/devops/"
